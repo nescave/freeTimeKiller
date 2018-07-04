@@ -42,7 +42,5 @@ ehthumbs.db
 [Tt]humbs.db
 [Dd]esktop.ini
 
-/Library/ShaderCache/
-/Library/metadata/
 /*.log
-Library/ScriptAssemblies/BuiltinAssemblies.stamp
+/Library/
