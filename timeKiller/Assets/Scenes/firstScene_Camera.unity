@@ -361,7 +361,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4974771429697704, guid: f1be86883d7ffa4408a533667872d6f4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.452
       objectReference: {fileID: 0}
     - target: {fileID: 4974771429697704, guid: f1be86883d7ffa4408a533667872d6f4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -408,6 +408,31 @@ Prefab:
         type: 2}
       propertyPath: movementSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 143974403511038020, guid: f1be86883d7ffa4408a533667872d6f4,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 143974403511038020, guid: f1be86883d7ffa4408a533667872d6f4,
+        type: 2}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 136779649668744004, guid: f1be86883d7ffa4408a533667872d6f4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 143974403511038020, guid: f1be86883d7ffa4408a533667872d6f4,
+        type: 2}
+      propertyPath: m_MinMoveDistance
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701608383544744, guid: f1be86883d7ffa4408a533667872d6f4,
+        type: 2}
+      propertyPath: gravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1be86883d7ffa4408a533667872d6f4, type: 2}
