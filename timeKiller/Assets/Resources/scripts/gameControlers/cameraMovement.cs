@@ -19,7 +19,7 @@ public class cameraMovement : MonoBehaviour {
 		float camRangeZ = cameraRange ;
 		cursorLocation = new Vector2(Input.mousePosition.x/ Screen.width, Input.mousePosition.y/ Screen.height);
 		camLocation.x = Mathf.Lerp(- camRangeX, camRangeX, Mathf.Sin(Mathf.Clamp(cursorLocation.x,0,1)));
-		camLocation.z = Mathf.Lerp(- camRangeZ * 1.7f, camRangeZ, Mathf.Sin(Mathf.Clamp(cursorLocation.y,0,1)));
+		camLocation.z = Mathf.Lerp(- camRangeZ * 1.4f, camRangeZ, Mathf.Sin(Mathf.Clamp(cursorLocation.y,0,1)));
 
 		transform.position = camfixedLocation + camLocation;
 		//rig.AddForce(Vector3.forward * camLocation.z, ForceMode.Acceleration);
