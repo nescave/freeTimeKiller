@@ -6,7 +6,7 @@ public class cameraMovement : MonoBehaviour {
 
 	public float cameraRange = 1f;
 	public Vector2 cursorLocation;
-	private Vector3 camLocation = Vector3.zero;
+	public Vector3 camLocation = Vector3.zero;
 	public Vector3 camfixedLocation;
 	// Use this for initialization
 	void Start () {
@@ -17,9 +17,11 @@ public class cameraMovement : MonoBehaviour {
 	void Update () {
 		float camRangeX = cameraRange ;
 		float camRangeZ = cameraRange ;
+		cursorLocation = new Vector2(Input.mousePosition.x/ Screen.width, Input.mousePosition.y/ Screen.height);
 		camLocation.x = Mathf.Lerp(- camRangeX, camRangeX, Mathf.Sin(Mathf.Clamp(cursorLocation.x,0,1)));
-		camLocation.z = Mathf.Lerp(- camRangeZ, camRangeZ, Mathf.Sin(Mathf.Clamp(cursorLocation.y,0,1)));
-		cursorLocation = Input.mousePosition / new Vector2(Screen.width, Screen.height);
+		camLocation.z = Mathf.Lerp(- camRangeZ * 1.4f, camRangeZ, Mathf.Sin(Mathf.Clamp(cursorLocation.y,0,1)));
+
 		transform.position = camfixedLocation + camLocation;
+		//rig.AddForce(Vector3.forward * camLocation.z, ForceMode.Acceleration);
 	}
 }
