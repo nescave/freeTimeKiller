@@ -33,7 +33,7 @@ public class GunBehaviour : MonoBehaviour {
 		Ray direction  = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit camHit;
 		Physics.Raycast(direction,out camHit,18f);
-		return  camHit.point - transform.position;
+		return  transform.TransformDirection(Vector3.forward);
 	}
 
 	private void fireBullet(Vector3 bulletDirection){
