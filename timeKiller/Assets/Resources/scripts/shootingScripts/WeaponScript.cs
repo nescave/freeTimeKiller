@@ -2,30 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunBehaviour : MonoBehaviour {
+public class WeaponScript : MonoBehaviour {
 
 	public float attackSpeed; 
-	public float bulletSpeed = 10000f;
+	public float bulletSpeed;
+	public AmmunitionSystem ammunition;
 	public GameObject bullet;
 	private float shootProgress = 99;
-
-	void Start () {
-		
-	}
+	private bool isActive = true;
+	
 	
 	void Update () {
 		if (Input.GetButton("Fire1")){
-			shoot();
+			if (isActive){
+				shoot();
+				}
+		}
+		else if(Input.GetButtonDown("Reload")){
+			ammunition.reload();
 		}
 		else shootProgress = 99;
+		
 	}
 
 	private void shoot(){
-		shootProgress+=(attackSpeed*Time.deltaTime*100);
-		if(shootProgress>=100){		
-			fireBullet(calculateBulletDirection().normalized);
-			shootProgress = 0;
-		}
+		if(!ammunition.isMagazineEmpty()){
+			shootProgress+=(attackSpeed*Time.deltaTime*100);
+			if(shootProgress>=100){		
+				fireBullet(calculateBulletDirection().normalized);
+				ammunition.currentlyLoaded--;
+				shootProgress = 0;
+			}
+		}else ammunition.reload();
 	}
 
 
@@ -46,5 +54,13 @@ public class GunBehaviour : MonoBehaviour {
 		Vector3 calculatedBulletSpawnPosition = transform.position;
 		calculatedBulletSpawnPosition += new Vector3(0,0,-0.31f); // the bullet spawns at the end of the gun
 		return calculatedBulletSpawnPosition;
+	}
+
+	public void setInactive(){
+		this.isActive = false;
+	}
+
+	public void setActive(){
+		this.isActive = true;
 	}
 }

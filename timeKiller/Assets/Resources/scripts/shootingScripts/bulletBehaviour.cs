@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bulletBehaviour : MonoBehaviour {
 
+	public float bulletDamage = 1f;
 	private int lifetimeTimer;
 	void Start () {
 		Invoke("DeleteBullet",6f);
@@ -15,13 +16,15 @@ public class bulletBehaviour : MonoBehaviour {
 	
 	void Update (){
 
-		}
+	}
 	
 
 	
 	void OnCollisionEnter(Collision other)
 	{
-		if(other.gameObject.tag !=("Player"))
+		if(other.gameObject.tag ==("Enemy")){
+			other.gameObject.GetComponent<Health>().getHit(bulletDamage);
+		}
 			Destroy(this.gameObject);
 	}
 }
