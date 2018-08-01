@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponSwitch : MonoBehaviour {
 
@@ -8,6 +6,7 @@ public class WeaponSwitch : MonoBehaviour {
 
 	void start(){
 		switchWeapon();
+		this.transform.position = transform.parent.position;
 	}
 	void Update () {
 		if (Input.GetButtonDown("PrimaryWeapon")){

@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-<<<<<<< HEAD
-=======
-  - Weapon
->>>>>>> shooting
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -18,12 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-<<<<<<< HEAD
-  - MouseRaycast
-=======
   - 
->>>>>>> shooting
+  - 
   - 
   - 
   - 

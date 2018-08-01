@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponScript : MonoBehaviour {
+	
+	public AmmunitionSystem ammunition;
 
+	[Header("WeaponStats")]
 	public float attackSpeed; 
 	public float bulletSpeed;
-	public AmmunitionSystem ammunition;
 	public GameObject bullet;
+
 	private float shootProgress = 99;
 	private bool isActive = true;
-	
+
+
 	
 	void Update () {
 		if (Input.GetButton("Fire1")){
@@ -33,26 +35,24 @@ public class WeaponScript : MonoBehaviour {
 				ammunition.currentlyLoaded--;
 				shootProgress = 0;
 			}
-		}else ammunition.reload();
+		}else {
+			ammunition.reload();
+			shootProgress = 99;
+		}
 	}
 
-
 	private Vector3 calculateBulletDirection(){
-		Ray direction  = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit camHit;
-		Physics.Raycast(direction,out camHit,18f);
-		return  transform.TransformDirection(Vector3.forward);
+		Vector3 bulletDirection =  -1* transform.parent.right;
+		return bulletDirection;
 	}
 
 	private void fireBullet(Vector3 bulletDirection){
 		GameObject bulletFired = Instantiate(bullet,calculateBulletSpawnPosition(),Quaternion.identity);
-		Physics.IgnoreCollision(bulletFired.GetComponent<Collider>(),GetComponentInParent<CharacterController>());
 		bulletFired.GetComponent<Rigidbody>().AddForce(bulletDirection*bulletSpeed,ForceMode.VelocityChange);
 	}
 	
 	private Vector3 calculateBulletSpawnPosition(){
-		Vector3 calculatedBulletSpawnPosition = transform.position;
-		calculatedBulletSpawnPosition += new Vector3(0,0,-0.31f); // the bullet spawns at the end of the gun
+		Vector3 calculatedBulletSpawnPosition = transform.GetChild(0).position;
 		return calculatedBulletSpawnPosition;
 	}
 
