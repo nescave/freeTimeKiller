@@ -18,6 +18,7 @@ public class playerMovement : MonoBehaviour {
 	public float planeDistance;
 	private RaycastHit hit;
 	private Ray ray;
+	public LayerMask mask;
 	
 	private void Awake() {
 
@@ -38,12 +39,14 @@ public class playerMovement : MonoBehaviour {
 		camMove.camfixedLocation = transform.position + camPos;
 		mousePos = Input.mousePosition;
 		ray = cam.ScreenPointToRay(new Vector3(mousePos.x,mousePos.y, 0f));
-		Physics.Raycast(ray, out hit,20f);
+		Debug.DrawRay(ray.origin, ray.direction *10f, Color.red);
+		Physics.Raycast(ray, out hit,20f, mask);
 		planeDistance = hit.distance;
 		targetPos = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, planeDistance));
 		AlignDir = targetPos - transform.position;
 		AlignDir.y = 0;
 		transform.rotation = Quaternion.LookRotation(AlignDir);
+
 		move();
 	}
 
